@@ -137,6 +137,7 @@ function setUserImage(b64, nameImgPlace){
 
   i.src = "data:image/jpg;base64," + b64;
 }
+
 function downloadUserImage(name, hash, nameImgPlace){
 
   if (name == "null") {document.getElementById(nameImgPlace).src = "/img/nullImage.jpg"; return; }
