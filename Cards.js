@@ -1,10 +1,10 @@
 
-var eth;
+var cards;
 
 function addEntry(URL, hash){
 
   console.log(document.getElementById('name').value + ":" + document.getElementById('info').value + ":" + parseInt(document.getElementById('age').value)+":" + URL +":" +hash);
-  eth.addCard(document.getElementById('name').value,
+  cards.addCard(document.getElementById('name').value,
               parseInt(document.getElementById('age').value),
               document.getElementById('info').value, 
                URL, hash, (err,res)=>{ console.log(err); console.log(res);});
@@ -13,7 +13,7 @@ function addEntry(URL, hash){
 
 function showEntry(numEntry, numPlace){
 
-    eth.getCard(numEntry, (err,res)=>{ 
+    cards.getCard(numEntry, (err,res)=>{ 
 
         data = res;
         document.getElementById('name'+numPlace+'fromBlockchain').innerHTML = data[0].replace("<", "&lt;").replace(">", "&gt;");
@@ -27,7 +27,7 @@ function showEntry(numEntry, numPlace){
 
 function updateShowingEntrys(){
 
-  eth.getSize((err,res)=>{
+  cards.getSize((err,res)=>{
 
       var len = res.c[0];
       console.log(len);
@@ -89,7 +89,7 @@ function initEth(){
               'type':'function'
             }]);
 
-  eth = EthContract.at(address);
+  cards = EthContract.at(address);
 
   console.log("Contract initialized successfully");
 
