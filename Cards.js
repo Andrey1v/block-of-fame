@@ -47,13 +47,13 @@ function updateShowingEntrys(){
 function initEth(){
 
   web3.eth.getAccounts((error,accounts)=>{
-  if(error){console.log(error); return; }
+  if (error) {console.log(error); return; }
 
   web3.eth.defaultAccount = accounts[0];
 
   var address = "0xe4518cf1a329e2942fab66c764307c97c52380ea";
 
-  if(typeof web3 !== 'undefined'){
+  if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
   } else {}
 
@@ -116,7 +116,7 @@ function setUserImage(b64, nameImgPlace){
       ctx.filter = 'blur(50px)';
       ctx.drawImage(i,0,0,740,560);
       ctx.filter = 'none';
-      var newHeight= (740/i.width)*i.height;
+      var newHeight = (740/i.width)*i.height;
       ctx.drawImage(i,0,(560-newHeight)/2,740,newHeight);
 
       img = canvas.toDataURL("image/jpg");
@@ -124,7 +124,7 @@ function setUserImage(b64, nameImgPlace){
       ctx.filter = 'blur(50px)';
       ctx.drawImage(i,0,0,740,560);
       ctx.filter = 'none';
-      var newWidth= (560/i.height)*i.width;
+      var newWidth = (560/i.height)*i.width;
       ctx.drawImage(i,(740-newWidth)/2,0,newWidth,560);
 
       img = canvas.toDataURL("image/jpg");
@@ -139,7 +139,7 @@ function setUserImage(b64, nameImgPlace){
 }
 function downloadUserImage(name, hash, nameImgPlace){
 
-  if(name == "null"){document.getElementById(nameImgPlace).src = "/img/nullImage.jpg"; return; }
+  if (name == "null") {document.getElementById(nameImgPlace).src = "/img/nullImage.jpg"; return; }
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/userImg/' + name, true);
@@ -154,7 +154,7 @@ function downloadUserImage(name, hash, nameImgPlace){
     var textHash = sjcl.codec.hex.fromBits(bitArray);
     console.log(textHash);
     
-    if(textHash == hash)setUserImage(b64, nameImgPlace);
+    if (textHash == hash) setUserImage(b64, nameImgPlace);
     else document.getElementById(nameImgPlace).src = "/img/isBrokenHash.jpg";
   };
 
@@ -184,7 +184,7 @@ function uploadUserImage(){
   console.log('uploadUserImage...');
 
   var file_data = document.getElementById('userFile').files[0];
-  if(file_data == undefined){ 
+  if (file_data == undefined) { 
     addEntry("null", "null"); 
     return ;
   }
