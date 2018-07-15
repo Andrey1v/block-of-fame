@@ -1,1 +1,1 @@
-# block-of-fame.xyz
+# block-of-fame
